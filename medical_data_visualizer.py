@@ -4,14 +4,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Import data
-df = None
+df = pd.read_csv('medical_examination.csv')
+df.head()
 
 # Add 'overweight' column
-df['overweight'] = None
+df['overweight'] = np.where(df['weight']/(df['height']/100) ** 2 > 25, 1, 0)
 
 # Normalize data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
 
+def draw_cat_plot():    
+    print(df.head(10))
 
+""" 
 # Draw Categorical Plot
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
@@ -31,8 +35,8 @@ def draw_cat_plot():
 
 
     # Do not modify the next two lines
-    fig.savefig('catplot.png')
-    return fig
+    # fig.savefig('catplot.png')
+    #return fig
 
 
 # Draw Heat Map
@@ -56,5 +60,6 @@ def draw_heat_map():
 
 
     # Do not modify the next two lines
-    fig.savefig('heatmap.png')
-    return fig
+    #fig.savefig('heatmap.png')
+    #return fig
+ """
